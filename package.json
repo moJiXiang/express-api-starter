@@ -4,8 +4,9 @@
   "description": "expressjs restfull starter",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=development nodemon ./server/app.js",
-    "start": "NODE_ENV=production nodemon ./server/app.js"
+    "start-test": "NODE_ENV=test nodemon ./server/app.js",
+    "start-dev": "NODE_ENV=development nodemon ./server/app.js",
+    "start-pro": "NODE_ENV=production nodemon ./server/app.js"
   },
   "keywords": [
     "restful",
@@ -20,19 +21,26 @@
     "bunyan": "^1.8.1",
     "composable-middleware": "^0.3.0",
     "compression": "^1.6.2",
-    "config": "^1.21.0",
     "crypto": "0.0.3",
     "express": "^4.13.4",
     "express-jwt": "^3.4.0",
-    "gulp": "^3.9.1",
-    "gulp-nodemon": "^2.1.0",
-    "jasmine-node": "^1.14.5",
     "jsonwebtoken": "^6.2.0",
     "method-override": "^2.3.6",
     "mongoose": "^4.4.14",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "require-dir": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-env": "^0.4.0",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.1.0",
+    "sinon": "^1.17.4",
+    "supertest": "^1.2.0"
   }
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 var jwt = require('jsonwebtoken'),
-    config = require('config'),
+    config = require('../config'),
     expressJwt = require('express-jwt'),
     compose = require('composable-middleware'),
     User = require('../api/user/user.model'),

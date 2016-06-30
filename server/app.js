@@ -1,9 +1,11 @@
 'use strict';
 
+
 var express = require('express'),
     mongoose = require('mongoose'),
-    config = require('config');
+    config = require('./config');
 // var auth = require('./utils/auth.js');
+
 
 console.log(config);
 // Connect to MongoDB
@@ -19,11 +21,11 @@ mongoose.connection.on('error', function(err) {
 });
 
 // init database with sample data
-if (config.seedDB) { require('./settings/seed'); }
+if (config.seedDB) { require('./setting/seed'); }
 
 var app = express();
 
-require('./settings/express')(app);
+require('./setting/express')(app);
 require('./routes')(app);
 // app config
 // app.use(logger('dev'));
@@ -55,5 +57,7 @@ app.use(function(err, req, res, next) {
 })
 
 app.listen(config.appConfig.port, function() {
-  console.log('App [%s] is running in process %s started on %s:%d, in %s mode', config.app, process.pid, '127.0.0.1', config.appConfig.port, app.get('env'));
+  console.log('App [%s] is running in process %s started on %s:%d, in %s mode', config.appConfig.name, process.pid, '127.0.0.1', config.appConfig.port, app.get('env'));
 });
+
+module.exports = app;

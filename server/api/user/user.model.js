@@ -24,7 +24,6 @@ UserSchema.pre('save', function(next) {
 
   // Handle new/update passwords
   if (this.isModified('password')) {
-    console.log('modify password')
     if (!(this.password && this.password.length) && authTypes.indexOf(this.provider) === -1) {
       next(new Error('Invalid Password'));
     }
@@ -39,7 +38,6 @@ UserSchema.pre('save', function(next) {
         if(encryptErr) {
           next(encryptErr);
         }
-        console.log(hashedPassword)
         _this.password = hashedPassword;
         next();
       })
@@ -66,14 +64,10 @@ UserSchema.methods = {
     }
 
     var _this = this;
-    console.log('***************')
-    console.log(this)
     this.encryptPassword(password, function(err, pwdGen) {
       if(err) {
         callback(err);
       }
-      console.log(_this.password)
-      console.log(pwdGen)
       if(_this.password === pwdGen) {
         callback(null, true);
       } else {
@@ -121,12 +115,13 @@ UserSchema.methods = {
     var defaultIterations = 10000;
     var defaultKeyLength = 64;
     var salt = new Buffer(this.salt, 'base64');
+    var digest = 'sha512'
 
     if(!callback) {
-      return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength).toString('base64');
+      return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength, digest).toString('base64');
     }
 
-    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, function(err, key) {
+    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, digest, function(err, key) {
       if(err) {
         callback(err);
       }

@@ -16,7 +16,7 @@ module.exports = function(app) {
     app.use(methodOverrider());
     app.use(passport.initialize());
 
-    if(env === 'development') {
+    if(env === 'development' || env === 'test') {
       app.use(morgan('dev'))
     }
 }

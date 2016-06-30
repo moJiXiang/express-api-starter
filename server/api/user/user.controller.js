@@ -1,7 +1,7 @@
 'use strict';
 
 var User = require('./user.model');
-var logger = require('../../settings/log');
+var logger = require('../../setting/log');
 var authService = require('../../auth/auth.service');
 
 var controller = {

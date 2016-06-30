@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-    config = require('config'),
     path = require('path');
 
 var nodemon = require('gulp-nodemon');
@@ -39,6 +38,6 @@ gulp.task('nodemon:production', function() {
   })
 })
 
-gulp.task('serve', ['nodemon:development']);
 gulp.task('serve:test', ['nodemon:test']);
-gulp.task('serve:production', ['nodemon:production']);
+gulp.task('serve:dev', ['nodemon:development']);
+gulp.task('serve:pro', ['nodemon:production']);
