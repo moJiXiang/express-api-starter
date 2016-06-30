@@ -5,5 +5,5 @@ module.exports = {
   mongo: {
     uri: "mongodb://localhost/expressapi-starter-test"
   },
-  seedDB: true
+  seedDB: false 
 }

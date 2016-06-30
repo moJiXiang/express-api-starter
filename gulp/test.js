@@ -38,10 +38,11 @@ gulp.task('test:mocha',['set-env'], function(){
     .pipe(mocha({
       reporter: 'spec'  //list,nyan,spec(default),progress
     }))
-    // .once('error', function() {
-    //   process.exit(1);
-    // })
-    // .once('end', function() {
-    //   process.exit();
-    // })
+    .once('error', function(err) {
+      console.error(err);
+      process.exit(-1);
+    })
+    .once('end', function() {
+      process.exit();
+    })
 })

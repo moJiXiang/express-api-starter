@@ -20,15 +20,12 @@ var genUser = function() {
 
 describe('User Model', function () {
   before(function() {
-    console.log('before........')
   })
 
   beforeEach(function() {
-    console.log('before each........')
   })
 
   afterEach(function() {
-    console.log('after each.........');
   })
 
   it('shoud begin with no users', function(done) {

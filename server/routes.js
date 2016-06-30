@@ -13,7 +13,11 @@ module.exports = function (app) {
     app.use('/api/users', require('./api/user'));
     app.use('/api/books', require('./api/book'));
 
-    app.use('/*', function (req, res, next) {
-        res.json({status: 'success', data: '鱼人永不败!'});
+    app.use('/api/test', function(req, res) {
+      res.json({result: 'test api result'});
     })
+
+    // app.use('/*', function (req, res, next) {
+    //     res.json({status: 'success', data: '鱼人永不败!'});
+    // })
 };

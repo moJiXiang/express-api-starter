@@ -27,26 +27,10 @@ var app = express();
 
 require('./setting/express')(app);
 require('./routes')(app);
-// app config
-// app.use(logger('dev'));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// var routes = requireDir('./api', {recurse: true});
-// var arr = [];
-// map objects to inject api
-// Object.keys(routes).map(function(value, index) {
-//   if (value === 'authenticate') {
-//     app.use('/' + config.apiVersion, routes[value]['route']);
-//   } else {
-//     app.use('/' + config.apiVersion, auth.requireAuthentication, routes[value]['route']);
-//     arr.push(routes[value]['route'])
-//   }
-// })
 
 app.use(function(req, res, next) {
   res.status(404).json({
-    error: 'Not found'
+    message: 'This api is not exit.'
   });
 });
 
