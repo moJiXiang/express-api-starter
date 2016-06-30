@@ -59,7 +59,6 @@ describe('Book API Router:', function () {
         .send({name: 'book test'})
         .expect(200)
         .end(function(err, res) {
-          console.log(res.body);
           expect(res.body.result.ok).to.equal(1);
           done();
         })
