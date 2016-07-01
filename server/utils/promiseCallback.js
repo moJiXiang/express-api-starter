@@ -18,11 +18,11 @@ exports.responseWithResult = function(res, statusCode) {
   }
 }
 
-exports.handleError = function(res, statusCode) {
+exports.handleError = function(req, res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
     // collection error message
-    logger.error('error', {error_msg: err.message});
+    logger.error('error', {method:req.method, api:req.originalUrl, error_msg:err.message});
     res.status(statusCode).json({message: err.message})
   }
 }
