@@ -3,7 +3,8 @@
 
 var express = require('express'),
     mongoose = require('mongoose'),
-    config = require('./config');
+    config = require('./config'),
+    http = require('http');
 
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);
@@ -21,7 +22,10 @@ mongoose.connection.on('error', function(err) {
 if (config.seedDB) { require('./setting/seed'); }
 
 var app = express();
+var server = http.Server(app);
+var socketio = require('socket.io')(server)
 
+require('./setting/socketio')(socketio);
 require('./setting/express')(app);
 require('./routes')(app);
 
