@@ -1,3 +1,11 @@
 {"name":"rattletrap","hostname":"mojixiang-MacPro","pid":23782,"level":50,"msg":"error { error_msg: 'unknow error' }","time":"2016-06-22T03:17:29.847Z","v":0}
 {"name":"rattletrap","hostname":"mojixiang-MacPro","pid":27710,"level":50,"msg":"error { error_msg: 'Cast to ObjectId failed for value \"[object Object]\" at path \"_id\"' }","time":"2016-06-30T12:04:46.799Z","v":0}
 {"name":"rattletrap","hostname":"mojixiang-MacPro","pid":28438,"level":50,"msg":"error { error_msg: 'Cast to ObjectId failed for value \"[object Object]\" at path \"_id\"' }","time":"2016-06-30T12:15:07.299Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":96538,"level":50,"msg":"error { error_msg: 'Book validation failed' }","time":"2016-07-01T05:58:41.479Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":96771,"level":50,"msg":"error { error_msg: 'Book validation failed' }","time":"2016-07-01T06:01:44.023Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":96803,"level":50,"msg":"error { error_msg: 'Book validation failed' }","time":"2016-07-01T06:02:11.225Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":96839,"level":50,"msg":"error { error_msg: 'Book validation failed' }","time":"2016-07-01T06:02:37.455Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":96881,"level":50,"msg":"error { api: '/api/books', error_msg: 'Book validation failed' }","time":"2016-07-01T06:03:20.077Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":97082,"level":50,"msg":"error { method: 'POST',\n  api: '/api/books',\n  error_msg: 'Book validation failed' }","time":"2016-07-01T06:06:13.359Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":97184,"level":50,"msg":"error { method: 'POST',\n  api: '/api/books',\n  error_msg: 'Book validation failed' }","time":"2016-07-01T06:07:37.336Z","v":0}
+{"name":"rattletrap","hostname":"mojixiang-MacPro","pid":97216,"level":50,"msg":"error { method: 'POST',\n  api: '/api/books',\n  error_msg: 'Book validation failed' }","time":"2016-07-01T06:08:08.680Z","v":0}
