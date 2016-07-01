@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.use('/api/users', require('./api/user'));
     app.use('/api/books', require('./api/book'));
 
+    // test api
     app.use('/api/test', function(req, res) {
       res.json({result: 'test api result'});
     })

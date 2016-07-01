@@ -5,30 +5,59 @@ var expect = require('chai').expect,
 
 var app = require('../../server/app');
 
+var newBook;
+
 describe('Book API Router:', function () {
 
-  describe('get /api/books', function () {
-    it('should return success and status 200', function (done) {
+  describe('GET /api/books', function () {
+    var books;
+
+    beforeEach(function(done) {
+
       request(app)
         .get('/api/books')
         .expect(200)
         .expect('Content-Type', /json/)
         .end(function(err, res) {
           if(err) return done(err);
+          books = res.body.result;
           done();
         })
+    })
+
+    it('should return success and status 200', function () {
+      expect(books).to.be.a('array');
     });
   });
 
-  describe('post /api/books', function () {
-    it('should return success , status 201, and book object', function(done) {
+  describe('POST /api/books', function () {
+
+    beforeEach(function(done) {
+
       request(app)
-        .post('/api/books')
-        .send({
-          name: 'mojixiang',
-          info: 'best'
-        })
-        .expect(201)
+      .post('/api/books')
+      .send({
+        name: 'mojixiang',
+        info: 'best'
+      })
+      .expect(201)
+      .end(function(err, res) {
+        if(err) return done(err);
+        newBook = res.body.result;
+        done();
+      })
+    })
+
+    it('should return success , status 201, and book object', function() {
+      expect(newBook.name).to.equal('mojixiang');
+    })
+  });
+
+  describe('GET /api/books/:id', function () {
+    it('should return success, status 200, and book object', function(done) {
+      request(app)
+        .get('/api/books/' + newBook._id)
+        .expect(200)
         .end(function(err, res) {
           if(err) return done(err);
           expect(res.body.result.name).to.equal('mojixiang');
@@ -37,25 +66,10 @@ describe('Book API Router:', function () {
     })
   });
 
-  describe('get /api/books/:id', function () {
-    it('should return success, status 200, and book object', function(done) {
-      var id = '5774f010b118e43f48b26f00'
-      request(app)
-        .get('/api/books/' + id)
-        .expect(200)
-        .end(function(err, res) {
-          if(err) return done(err);
-          expect(res.body.result.name).to.be.a('string');
-          done();
-        })
-    })
-  });
-
-  describe('put /api/books/:id', function () {
+  describe('PUT /api/books/:id', function () {
     it('should return success, status 200', function(done) {
-      var id = '5774f010b118e43f48b26f00'
       request(app)
-        .put('/api/books/'+id)
+        .put('/api/books/'+ newBook._id)
         .send({name: 'book test'})
         .expect(200)
         .end(function(err, res) {

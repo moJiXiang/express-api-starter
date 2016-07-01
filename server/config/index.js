@@ -19,7 +19,7 @@ var defaultConfig = {
   userRoles: ['user', 'admin'],
   logDir: path.join(__dirname + '/../../logs')
 }
-console.log(process.env.NODE_ENV)
+
 var config = _.merge(defaultConfig, require('./' + process.env.NODE_ENV + '.js') || {});
 
 module.exports = config;

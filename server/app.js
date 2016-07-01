@@ -4,10 +4,7 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     config = require('./config');
-// var auth = require('./utils/auth.js');
 
-
-console.log(config);
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
