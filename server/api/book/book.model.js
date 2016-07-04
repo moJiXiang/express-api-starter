@@ -9,4 +9,6 @@ var BookSchema = new Schema({
   author: {type: Schema.Types.ObjectId, ref: 'User'}
 })
 
+
+BookSchema.plugin(require('../../utils/mongoose-api-query'));
 module.exports = mongoose.model('Book', BookSchema);

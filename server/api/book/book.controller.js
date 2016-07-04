@@ -6,7 +6,7 @@ var Book = require('./book.model'),
 var controller = {
   // get /api/books
   list: function(req, res) {
-    Book.findAsync()
+    Book.apiQuery(req.query)
       .then($.handleEntityNotFound(res))
       .then($.responseWithResult(res))
       .catch($.handleError(req, res))
@@ -35,7 +35,7 @@ var controller = {
   // delete /api/books/:id
   destroy: function(req, res) {
     Book.findOneAndRemove({_id: id})
-      .then($.responseWithResult(res))
+      .then($.responseWithResult(res, 204))
       .catch($.handleError(req, res))
   }
 }
