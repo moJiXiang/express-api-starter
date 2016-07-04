@@ -24,6 +24,10 @@ var controller = {
       .catch(function(err) {
         return next(err);
       })
+  },
+
+  getToken: function(req, res, next) {
+    
   }
 }
 

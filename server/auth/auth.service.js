@@ -12,13 +12,19 @@ var validateJwt = expreeJwt({
 })
 
 function isAuthenticated() {
+  console.log('...........isAuthenticated');
   return compose()
     .use(function(req, res, next) {
-      req.headers.authorization = 'Bearer ' + req.headers.access_token;
-
+      if(req.headers && req.headers.access_token) {
+        console.log('=========');
+        req.headers.authorization = 'Bearer ' + req.headers.access_token;
+      }
+      console.log(req.headers);
       validateJwt(req, res, next);
     })
     .use(function(req, res, next) {
+      console.log('-------------------');
+      console.log(req.user);
       User.findByIdAsync(req.user._id)
         .then(function(user) {
           if(!user) {
@@ -31,6 +37,21 @@ function isAuthenticated() {
         .catch(function(err) {
           return next(err);
         })
+    })
+}
+
+function hasRole(role) {
+  if(!role) {
+    throw new Error('Required role needs to be set');
+  }
+  return compose()
+    .use(isAuthenticated())
+    .use(function(req, res, next) {
+      if(config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(role)) {
+        next();
+      } else {
+        return res.status(403).json({message: 'Have no correct role.'})
+      }
     })
 }
 

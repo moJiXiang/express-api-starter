@@ -6,8 +6,8 @@ var authTypes = ['github', 'google'];
 var crypto = require('crypto');
 
 var UserSchema = new Schema({
-  name: {type: String, unique: true, require: true},
-  email: {type: String,unique: true, require: true},
+  name: {type: String, unique: true, required: true},
+  email: {type: String,unique: true, required: true},
   role: {
     type: String,
     default: 'user'
