@@ -12,19 +12,14 @@ var validateJwt = expreeJwt({
 })
 
 function isAuthenticated() {
-  console.log('...........isAuthenticated');
   return compose()
     .use(function(req, res, next) {
       if(req.headers && req.headers.access_token) {
-        console.log('=========');
         req.headers.authorization = 'Bearer ' + req.headers.access_token;
       }
-      console.log(req.headers);
       validateJwt(req, res, next);
     })
     .use(function(req, res, next) {
-      console.log('-------------------');
-      console.log(req.user);
       User.findByIdAsync(req.user._id)
         .then(function(user) {
           if(!user) {
@@ -63,4 +58,5 @@ function signToken(id, role) {
 }
 
 exports.isAuthenticated = isAuthenticated;
+exports.hasRole = hasRole;
 exports.signToken = signToken;
