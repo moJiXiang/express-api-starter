@@ -31,7 +31,7 @@ describe('User Model', function () {
   it('shoud begin with no users', function(done) {
     User.findAsync({})
       .then(function(response) {
-        expect(response).to.have.length(2);
+        expect(response).to.be.a('array');
         done();
       })
   })
