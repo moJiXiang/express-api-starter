@@ -31,11 +31,11 @@ var controller = {
       .then($.responseWithResult(res))
       .catch($.handleError(req, res))
   },
-
   // delete /api/books/:id
   destroy: function(req, res) {
-    Book.findOneAndRemove({_id: id})
-      .then($.responseWithResult(res, 204))
+    Book.findByIdAsync(req.params.id)
+      .then($.handleEntityNotFound(res))
+      .then($.removeEntity(res))
       .catch($.handleError(req, res))
   }
 }
