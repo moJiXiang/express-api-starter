@@ -22,7 +22,7 @@ mongoose.connection.on('error', function(err) {
 if (config.seedDB) { require('./setting/seed'); }
 
 var app = express();
-var server = http.Server(app);
+var server = http.createServer(app);
 var socketio = require('socket.io')(server)
 
 require('./setting/socketio')(socketio);
@@ -41,7 +41,8 @@ app.use(function(err, req, res, next) {
     })
 })
 
-app.listen(config.appConfig.port, function() {
+// FIXME: http://stackoverflow.com/questions/24793255/socket-io-cant-get-it-to-work-having-404s-on-some-kind-of-polling-call
+server.listen(config.appConfig.port, config.appConfig.ip, function() {
   console.log('App [%s] is running in process %s started on %s:%d, in %s mode', config.appConfig.name, process.pid, '127.0.0.1', config.appConfig.port, app.get('env'));
 });
 
