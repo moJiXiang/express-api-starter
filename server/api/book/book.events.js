@@ -8,7 +8,7 @@ var EventEmitter = require('events').EventEmitter,
     Book = require('./book.model'),
     BookEvents = new EventEmitter();
 
-BookEvents.setMaxListeners(0)
+BookEvents.setMaxListeners(10)
 
 var events = {
   'save': 'save',
@@ -23,10 +23,12 @@ for (var e in events) {
 
 function emitEvent(event) {
   return function(doc) {
+    console.log('=============')
+    console.log(event);
     BookEvents.emit(event + ':' + doc._id, doc);
 
     BookEvents.emit(event, doc);
   }
 }
 
-module.export = BookEvents;
+module.exports = BookEvents;
