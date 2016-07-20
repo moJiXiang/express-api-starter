@@ -8,6 +8,7 @@ var defaultConfig = {
   env: process.env.NODE_ENV,
   appConfig: {
     name: "rattletrap",
+    ip: process.env.IP || '0.0.0.0',
     port: process.env.PORT || 8000,
   },
   mongo: {
