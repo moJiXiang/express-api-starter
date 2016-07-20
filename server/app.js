@@ -42,6 +42,7 @@ app.use(function(err, req, res, next) {
 })
 
 // FIXME: http://stackoverflow.com/questions/24793255/socket-io-cant-get-it-to-work-having-404s-on-some-kind-of-polling-call
+// FIXME: server.listen, app.listen
 server.listen(config.appConfig.port, config.appConfig.ip, function() {
   console.log('App [%s] is running in process %s started on %s:%d, in %s mode', config.appConfig.name, process.pid, '127.0.0.1', config.appConfig.port, app.get('env'));
 });
