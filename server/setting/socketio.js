@@ -32,6 +32,7 @@ module.exports = function(socketio) {
   //  secret: config.secret,
   //  handshake: true
   //}))
+
   socketio.on('connection', function(socket) {
     console.log('socket........');
     socket.address = socket.request.connection.remoteAddress + ':' + socket.request.connection.remotePort;
@@ -48,6 +49,9 @@ module.exports = function(socketio) {
       socket.log('DISCONNECTED');
     });
 
+    socket.emit('send:name', {
+      name: 'mojixiang'
+    })
     // Call onConnect.
     onConnect(socket);
     socket.log('CONNECTED')

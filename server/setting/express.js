@@ -9,7 +9,14 @@ var express = require('express'),
 
 module.exports = function(app) {
     var env = app.get('env');
-
+    app.use(function (req, res, next) {
+        // FIXME: https://github.com/mrjoes/tornadio2/issues/30
+        res.header("Access-Control-Allow-Origin", req.headers.origin);
+        res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+        res.header('Access-Control-Allow-Credentials', 'true');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token');
+        next();
+    })
     app.use(compression());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
